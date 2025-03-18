@@ -39,6 +39,27 @@ This command lists all events in a pretty way using the rich python package:
 wt list
 ```
 
+## Project Tracking
+
+Work Tracker supports tracking work across multiple projects:
+
+Create or switch to a project:
+```bash
+wt -p "project-name"
+```
+
+List all available projects:
+```bash
+wt --projects
+```
+
+View a summary of all projects with their total work time:
+```bash
+wt --summary
+```
+
+When you use `wt list`, it only shows events for the current project. All events are associated with the active project when they're created.
+
 ## Configuration
 
 Set the `WORK_TRACKER_DB_PATH` environment variable to specify where the SQLite database should be stored:
