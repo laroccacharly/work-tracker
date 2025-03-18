@@ -1,0 +1,43 @@
+# Usage 
+
+By default this will create a start work event 
+```bash
+wt
+```
+You can also pass in the message. 
+```bash
+wt -m "message" 
+```
+For the stop event, we use the -s flag. 
+```bash
+wt -s
+```
+You can combine with 
+```bash
+wt -s -m "Worked on this"
+```
+If we call wt and there is already a start event, we create a marker event instead. 
+A start event is completed once we call the stop event with wt -s. 
+
+This command lists all events in a pretty way using the rich python package. 
+```bash
+wt list 
+```
+Query the db to get the list of events. 
+
+# Backend 
+We use sqlite to store the data. 
+The db is always at env variables "WORK_TRACKER_DB_PATH", if not set, add it to .zshrc and reload. 
+Create the db there if does not exist. 
+Create a init.sql to init the db. We have just one table named "events". 
+
+The schema is based on this model: 
+class Event(BaseModel):
+    message: str
+    type: Literal["start", "stop", "marker"]
+    time: int # unix timestamp
+
+All functionality should be in the file `work_tracker/main.py` and the entry function is main. 
+
+
+
